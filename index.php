@@ -23,7 +23,7 @@
 			<br><br><center><h1 style="color:white"> UBERMO </h1></center><br><br><br>
 			<h5 style="color:white"> Login:</h5><br>
 			<center>
-				<input class="w3-input w3-border" type="text" placeholder="Email" required type ="text" <ce name="email"/><br>
+				<input class="w3-input w3-border" placeholder="Email" required type ="text" <ce name="email"/><br>
 				<p><input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/></p><br>
 				<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="ENTRAR" value="ENTRAR"/></p><br>
 				<h6 style="color:white">Não possui login?</h6>

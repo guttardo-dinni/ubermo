@@ -62,18 +62,56 @@
 	<head>
 	<title>UBERMO</title>
 </head>
-<body background = "plano.jpg">
-	<h1><center>UBERMO - UBER Mão de Obra</center></h1>
 
-	<form method="post" action="PesquisaPrestador.php"> 
-	<center>  <b> Pesquisar prestador: </b><input type="text" name="prestadorname">
-				<input type="submit" name="pesquisa" value="Pesquisar"/></center></form>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.w3-sidebar a {font-family: "Roboto", sans-serif}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: black;}
+	body {
+	    background-color: #cccccc;
+	}
+</style>
+
+<body>
+
+	<center>
+		<br>
+		<form method="post" action="PesquisaPrestador.php">
+			<input class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-white w3-black" type="submit" name="pesquisa" value="Pesquisar"/>
+			<input class="w3-input w3-right w3-border" style="width:200px" type="text" placeholder="Pesquisar Prestador" name="prestadorname"/>
+		</form>
+	</center>
+
+	<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+		<div class="w3-container w3-display-container w3-padding-16">
+		<i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+		<h3 class="w3-wide"><b>UBERMO</b></h3>
+		<h6 class='w3-wide'><b>
+			<?php 
+				if($categoria == 1) 
+					{ echo "Prestador";}
+				else if($categoria == 0) 
+					echo "Cliente";
+			?>	
+		</b></h6>
+		</div>
+		<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+		<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
+		<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
+		</div>
+	</nav>
+
 
 	<?php if($categoria == 1)	{ ?>
 		<center><a href="TodasSolicitacoes.php"><b> Consultar Solicitações </b></a>  </center>
 	<?php } ?>
 
-	<center><h2>Seus serviços passados: </h2></center>
+	<center><br><br><br><h2>Seus serviços passados: </h2></center>
 	<ul>  
 <?php
 	// se o número de resultados for maior que zero, mostra os dados
@@ -157,6 +195,7 @@
 mysqli_free_result($dados);
 ?>
 
+	
 	<center><a href="AbrirSolicitacao.php">Clique aqui para abrir uma nova solicitação</a> </center>
 
 
