@@ -56,6 +56,11 @@
 	else{ 
 
 		$sql = mysqli_query($conexao, "INSERT INTO servico (nomeservico,valormercado,tipo,status,descricao) VALUES ('$nomeservico','$valormercado','$tipo','$status','$descricao')");
+
+		if($categoria == 0)
+			$sql = mysqli_query($conexao, "INSERT INTO sugerec (idcliente,nomeservico) VALUES ('$idpessoa','$nomeservico')");
+		else if ($categoria == 1)
+			$sql = mysqli_query($conexao, "INSERT INTO sugerep (idprestador,nomeservico) VALUES ('$idpessoa','$nomeservico')");
 		//$sql = mysqli_query($conexao, "INSERT INTO servico (nomeservico, valormercado, tipo, status, descricao) VALUES ('Barman', '175', '1', '1', 'Serve bebida pra galera')")
 		echo "<script>alert('Sugestão enviada com sucessos!')</script>";
 		echo "<script>setTimeout(window.location='upload.php')</script>";

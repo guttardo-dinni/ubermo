@@ -16,8 +16,10 @@
 		$categoria= $_SESSION['categoria']; 
 	}
 
-	if(!isset($_POST['ServicoName']) || !isset($_POST['idEnd']))
-		header("Location: upload.php");
+	if(!isset($_POST['ServicoName']) || !isset($_POST['idEnd'])){
+		echo "<script>alert('Favor marcar todos os campos')</script>";
+		echo "<script>setTimeout(window.location='AbrirSolicitacao.php')</script>";
+	}
 
 	//CONEXAO COM O BD
 	$host = "localhost";
@@ -59,14 +61,14 @@
 
 		/////////////////////////////////////
 
-		$notacliente = 0; // NÃO HÁ NOTA EM SERVIÇO QUE NÃO FOI FINALIZADO
-		$notaprestador = 0; 
+		$notaprocliente = 0; // NÃO HÁ NOTA EM SERVIÇO QUE NÃO FOI FINALIZADO
+		$notaproprestador = 0; 
 		$comcliente = NULL; // NÃO HÁ COMENTÁRIO EM SERVIÇO QUE NÃO FOI FINALIZADO
 		$comprestador = NULL; 
 		$efetuado = 2; // SETARÁ A VARIÁVEL EFETUADO PARA "AGUARDANDO PRESTADOR"
 		$dataAMD = date("Y-m-d"); //FUNÇÃO QUE PEGA A DATA ATUAL
 
-		$sql = mysqli_query($conexao, "INSERT INTO solicitacao (idcliente,nomeservico,idprestador,endereco,valor,notacliente,notaprestador,comcliente,comprestador,efetuado,dataAMD) VALUES ('$idpessoa','$nomeservico','0','$endereco','$valor','$notacliente','$notaprestador','$comcliente','$comprestador','$efetuado','$dataAMD')");
+		$sql = mysqli_query($conexao, "INSERT INTO solicitacao (idcliente,nomeservico,idprestador,endereco,valor,notaprocliente,notaproprestador,comcliente,comprestador,efetuado,dataAMD) VALUES ('$idpessoa','$nomeservico','0','$endereco','$valor','$notaprocliente','$notaproprestador','$comcliente','$comprestador','$efetuado','$dataAMD')");
 			echo "<script>alert('Solicitacao de $nomeservico realizada com sucesso!')</script>";
 			echo "<script>setTimeout(window.location='upload.php')</script>";
 	?>

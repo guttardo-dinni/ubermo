@@ -107,15 +107,17 @@
 		</p>
 		</div>
 		<div  style="font-weight:bold">
+			<?php if($categoria == 0 ) { ?>
 			<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
+			<?php } else if($categoria == 1 ) { ?>
+			<a href="TodasSolicitacoes.php" class="w3-bar-item w3-button">Consultar Solicitações</a>
+			<?php } ?>
+			<?php if($categoria == 1) { ?>
+			<a href="AprovarServicos.php" class="w3-bar-item w3-button">Aprovar Serviços</a>
+			<?php } ?>
 			<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
 		</div>
 	</nav>
-
-
-	<?php if($categoria == 1)	{ ?>
-		<center><a href="TodasSolicitacoes.php"><b> Consultar Solicitações </b></a>  </center>
-	<?php } ?>
 
 	<center><br><br><br><h2>Seus serviços passados: </h2></center>
 	<ul>  
