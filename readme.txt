@@ -1,0 +1,1 @@
+Acesse o phpmyadmin e crie um bd com o nome "trabalho" e importar o arquivo da pasta SQL 3.0
