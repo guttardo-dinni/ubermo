@@ -5,7 +5,7 @@
 	</head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,9 +20,9 @@
 
 	<body class="w3-content" style="max-width:500px">
 		<form method="post" action="autentica.php">
-			<br><br><center><h1 style="color:white"> UBERMO </h1></center><br><br><br>
-			<h5 style="color:white"> Login:</h5><br>
-			<center>
+			<br><br><center><h1 class="w3-animate-top" style="color:white"> UBERMO </h1></center><br><br><br>
+			<h5 style="color:white" class="w3-animate-left"> Login:</h5><br>
+			<center class="w3-animate-left">
 				<input class="w3-input w3-border" placeholder="Email" required type ="text" <ce name="email"/><br>
 				<p><input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/></p><br>
 				<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="ENTRAR" value="ENTRAR"/></p><br>

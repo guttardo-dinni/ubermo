@@ -71,8 +71,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 	.w3-sidebar a {font-family: "Roboto", sans-serif}
-	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: black;}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: white;}
 	body {
+		background-image: url("blue-slate.jpg");
 	    background-color: #cccccc;
 	}
 </style>
@@ -90,8 +91,8 @@
 	<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
 		<div class="w3-container w3-display-container w3-padding-16">
 		<i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-		<h3 class="w3-wide"><b>UBERMO</b></h3>
-		<h6 class='w3-wide'><b>
+		<h3 class="w3-wide" style="color: black"><b>UBERMO</b></h3>
+		<h6 class='w3-wide' style="color: black"><b>
 			<?php 
 				if($categoria == 1) 
 					{ echo "Prestador";}
@@ -99,10 +100,15 @@
 					echo "Cliente";
 			?>	
 		</b></h6>
+		<p style="font-size: 12px">
+			<?php
+				echo "$email"
+			?>	
+		</p>
 		</div>
-		<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-		<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
-		<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
+		<div  style="font-weight:bold">
+			<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
+			<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
 		</div>
 	</nav>
 
@@ -194,9 +200,3 @@
 // tira o resultado da busca da memória
 mysqli_free_result($dados);
 ?>
-
-	
-	<center><a href="AbrirSolicitacao.php">Clique aqui para abrir uma nova solicitação</a> </center>
-
-
-	<br><center> <?php if($categoria == 1) { echo "Logado com Prestador ID$idpessoa - $email";} else if($categoria == 0) echo "Logado com Cliente ID$idpessoa - $email";?> <a href="logout.php"> [SAIR]</a>  </center>
