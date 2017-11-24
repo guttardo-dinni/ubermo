@@ -14,26 +14,50 @@
 
 <html>
 <head>
-	<title>UBERMO</title>
+	<title>UBERMO - Sugestões</title>
 </head>
-<body background = "plano.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.w3-sidebar a {font-family: "Roboto", sans-serif}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: white;}
+	body {
+		background-image: url("blue-slate.jpg");
+	    background-color: #cccccc;
+	}
+</style>
+
+<body class="w3-content" style="max-width:500px">
 
 <form method="post" action="sugere.php">
 
-	<br><br><br><br><br><br><br><br><br>
-	<center><h2> UBERMO Login </h2></center>
-	<center> Nome do Serviço: <input type ="text" <ce name="nomeservico"/> </center>
+	<br><br><br>
+	<center><h2> UBERMO</h2></center>
 	<br>
-	<center> Valor: <input type="text" name="valormercado"/> </center>
-	<br> 
-	<center> Descrição: <textarea name="descricao"></textarea> </center>
-	<br> 
-	<center> <input type="submit" name="Fazer sugestao" value="Fazer sugestao"/> </center>
-	<br>
+	<center><h3> Deixe aqui sua sugestão de serviço</h3></center>
+	<br><br>
+	<center>
+		<input class="w3-input w3-border" placeholder="Um nome para o serviço" required type ="text" <ce name="nomeservico"/><br>
+		<input class="w3-input w3-border" placeholder="Qual o valor?" required type ="text" <ce name="valormercado"/><br>
+		<textarea class="w3-input w3-border" placeholder="Descreva sobre o serviço" name="descricao"></textarea>
+		<br>
+		<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="SUGERIR!" value="SUGERIR!"/></p>
+	</center>
 	
 </form>
-
+	<br>
+	<center><?php 
+		if($categoria == 1)
+			echo "Prestador - $email";
+		else
+			echo "Cliente - $email";
+		?>
+		<br><br>
+		<a  class="w3-button w3-block w3-red" style="width:90px" href="logout.php">SAIR</a>
+	</center>
 </body>
 </html>
-
-	<br><center> <?php if($categoria == 1) { echo "Logado com Prestador ID$idpessoa - $email";} else if($categoria == 0) echo "Logado com Cliente ID$idpessoa - $email";?> <a href="logout.php"> [SAIR]</a>  </center>

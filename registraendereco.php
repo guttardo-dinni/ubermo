@@ -27,34 +27,52 @@
 
 <html>
 <head>
-	<title>Registro de endereço UBERMO</title>
+	<title>UBERMO - Novo Endereço</title>
 </head>
-<body background = "plano.jpg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.w3-sidebar a {font-family: "Roboto", sans-serif}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: white;}
+	body {
+		background-image: url("blue-slate.jpg");
+	    background-color: #cccccc;
+	}
+</style>
+
+<body>
 
 <form method="post" action="CadastrandoEndereco.php">
 
-	<br><br><br><br><br><br><br><br><br>
-	<center><h2> Sistema de Cadastro de Endereço </h2></center>
-	<center> Identificação (Exemplo: Minha Casa): <input type="text" name="nomeEnd"/> </center>
+	<br><br>
+	<center><h2> Novo Endereço</h2></center>
 	<br>
-	<center> Rua: <input type ="text" name="rua"/> </center>
-	<br>
-	<center> Número: <input type ="text" name="numero"/> </center>
-	<br>
-	<center> Complemento: <input type ="text" name="complemento"/> </center>
-	<br>
-	<center> Bairro: <input type ="text" name="bairro"/> </center>
-	<br>
-	<center> Cidade: <input type ="text" name="cidade"/> </center>
-	<br>
-	<center> CEP: <input type="text" name="cep"/> </center>
-	<br>
-	<center> <input type="submit" name="Cadastrar" value="Registrar endereço"/> </center>
+	<center>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Identificação (Exemplo: Minha Casa" required type ="text" name="nomeEnd"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Rua" required type ="text" name="rua"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Nº" required type ="text" name="numero"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Complemento" required type ="text" name="complemento"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Bairro" required type ="text" name="bairro"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Cidade" required type ="text" name="cidade"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="CEP" required type ="text" name="cep"/>
+		<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="Cadastrar" value="CADASTRAR"/></p>
+	</center>
 
-	
 </form>
-
+<br>
+	<center><?php 
+		if($categoria == 1)
+			echo "Prestador - $email";
+		else
+			echo "Cliente - $email";
+		?>
+		<br><br>
+		<a  class="w3-button w3-block w3-red" style="width:90px" href="logout.php">SAIR</a>
+	</center>
 </body>
 </html>
-
-<br><center> <?php if($categoria == 1) { echo "Logado com Prestador ID$idpessoa - $email";} else if($categoria == 0) echo "Logado com Cliente ID$idpessoa - $email";?> <a href="logout.php"> [SAIR]</a>  </center>

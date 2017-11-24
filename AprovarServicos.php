@@ -28,7 +28,23 @@
 	<head>
 	<title>UBERMO</title>
 </head>
-<body background = "plano.jpg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.w3-sidebar a {font-family: "Roboto", sans-serif}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: white;}
+	body {
+		background-image: url("blue-slate.jpg");
+	    background-color: #cccccc;
+	}
+</style>
+
+<body>
 	<h1><center>Consulta de solicitações</center></h1>
 
 	<?php
@@ -64,9 +80,16 @@
 	?>
 
 	<br>
-	<center><a href="upload.php"> VOLTAR </a>  </center>
-
+	<center><a class="w3-button w3-block w3-black" style="width:90px" href="upload.php"> VOLTAR </a>  </center>
+	<br>
+	<center><?php 
+		if($categoria == 1)
+			echo "Prestador - $email";
+		else
+			echo "Cliente - $email";
+		?>
+		<br><br>
+		<a  class="w3-button w3-block w3-red" style="width:90px" href="logout.php">SAIR</a>
+	</center>
 	</body>
 	</html>
-
-	<br><center> <?php if($categoria == 1) { echo "Logado com Prestador ID$idpessoa - $email";} else if($categoria == 0) echo "Logado com Cliente ID$idpessoa - $email";?> <a href="logout.php"> [SAIR]</a>  </center>
