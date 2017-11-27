@@ -1,6 +1,6 @@
 <?php
 
-	if(!isset($_POST['nome']) || !isset($_POST['email']) || !isset($_POST['senha']) || !isset($_POST['cpf']) || !isset($_POST['telefone']) )
+	if(!isset($_POST['nome']) || !isset($_POST['email']) || !isset($_POST['senha']) || !isset($_POST['cpf']) || !isset($_POST['telefone']) || !isset($_FILES['arquivo']) )
 		header("Location: index.php");
 
 
@@ -49,17 +49,36 @@
 	$cpf = $_POST['cpf'];
 	$telefone = $_POST['telefone'];
 
-	$foto = NULL;
+	
 	$pontuacao = 0;
 	$numerocc = NULL;
 
-	if( $nome == NULL || $email == NULL || $senha == NULL || $telefone == NULL || $cpf == NULL ){
+	if(isset($_FILES['arquivo'])){
+		$extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+		$foto = md5(time()). $extensao; // novo nome do foto
+	}
+	//}else{
+	//	echo "<script>alert('Ocorreu uma falha no upload da imagem')</script>";
+	//	echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+	//}
+
+
+
+
+
+	if( $nome == NULL || $email == NULL || $senha == NULL || $telefone == NULL || $cpf == NULL || !isset($_FILES['arquivo'] ) ){
 		echo "<script>alert('Favor preencher todos os campos')</script>";
 		echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
 	}
 	else{ 
+		//Abaixo colocando a imagem no na pasta
+		$diretorio = "upload/";
+		move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$foto);
 
+		//Inserindo no banco de dados
 		$sql = mysqli_query($conexao, "INSERT INTO cliente (nome,email,cpf,foto,pontuacao,telefone,numerocc,senha) VALUES ('$nome','$email','$cpf','$foto','$pontuacao','$telefone','$numerocc','$senha')");
+
+
 		echo "<script>alert('Cadastrado com sucessos!')</script>";
 		echo "<script>setTimeout(window.location='index.php')</script>";
 

@@ -19,7 +19,7 @@
 </style>
 
 <body class="w3-content" style="max-width:500px">
-<form method="post" action="CadastrandoCliente.php">
+<form method="post" action="CadastrandoCliente.php" enctype="multipart/form-data">
 
 	<br><br><br><br><br>
 	<center><h1 style="color: white"> Cadastro de Cliente </h1></center>
@@ -30,7 +30,9 @@
 		<input class="w3-input w3-border" type="text" placeholder="CPF" required type ="text" <ce name="cpf"/><br>
 		<input class="w3-input w3-border" type="text" placeholder="Telefone" required type ="text" <ce name="telefone"/><br>
 		<input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/><br>
+		Arquivo : <input type="file" required name="arquivo">
 		<input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="CADASTRAR" value="CADASTRAR"/><br>
+		<!--<input type="submit" value="Salvar"> -->
 	</center>
 
 	
