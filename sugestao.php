@@ -41,8 +41,8 @@
 	<center><h3> Deixe aqui sua sugestão de serviço</h3></center>
 	<br><br>
 	<center>
-		<input class="w3-input w3-border" placeholder="Um nome para o serviço" required type ="text" <ce name="nomeservico"/><br>
-		<input class="w3-input w3-border" placeholder="Qual o valor?" required type ="text" <ce name="valormercado"/><br>
+		<input class="w3-input w3-border" placeholder="Um nome para o serviço" required type ="text" name="nomeservico"/><br>
+		<input class="w3-input w3-border" placeholder="Qual o valor?" required type ="number" name="valormercado"/><br>
 		<textarea class="w3-input w3-border" placeholder="Descreva sobre o serviço" name="descricao"></textarea>
 		<br>
 		<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="SUGERIR!" value="SUGERIR!"/></p>

@@ -4,10 +4,10 @@
 	if(!isset($_POST['email']) || !isset($_POST['senha']) )
 		header("Location: index.php");
 
-	$host = "localhost";
-	$user = "root";
-	$senha = "";
-	$banco = "trabalho";
+	if(!isset($_POST['tipoconta']) || $_POST['tipoconta'] < 1 || $_POST['tipoconta'] > 2)
+		header("Location: index.php");
+	
+	include("config.php");
 
 	$conexao = mysqli_connect($host, $user, $senha, $banco) or die(mysqli_error());
 
@@ -37,10 +37,21 @@
 
 	$email= $_POST['email'];
 	$senha = $_POST['senha'];
-	$sql = mysqli_query($conexao, "SELECT * FROM cliente WHERE email='$email' and senha='$senha'") or die(mysqli_error());
-	$sql2 = mysqli_query($conexao, "SELECT * FROM prestador WHERE email='$email' and senha='$senha'") or die(mysqli_error());
-	$row = mysqli_num_rows($sql);
-	$row2 = mysqli_num_rows($sql2);
+	$tipoconta = $_POST['tipoconta'];
+	
+	$row = 0;
+	$row2 = 0;
+	
+	if($tipoconta == 1){
+		$sql = mysqli_query($conexao, "SELECT * FROM cliente WHERE email='$email' and senha='$senha'") or die(mysqli_error());
+		$row = mysqli_num_rows($sql);
+	}
+	else{
+		$sql2 = mysqli_query($conexao, "SELECT * FROM prestador WHERE email='$email' and senha='$senha'") or die(mysqli_error());
+		$row2 = mysqli_num_rows($sql2);
+	}
+	
+	
 
 
 	if($row2 > 0){ // AQUI É UM PRESTADOR

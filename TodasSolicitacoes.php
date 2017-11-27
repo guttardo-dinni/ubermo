@@ -13,10 +13,7 @@
 	}
 
 	//CONEXAO COM O BD
-	$host = "localhost";
-	$user = "root";
-	$senha = "";
-	$banco = "trabalho";
+	include("config.php");
 
 	$conexao = mysqli_connect($host, $user, $senha, $banco) or die(mysqli_error());
 

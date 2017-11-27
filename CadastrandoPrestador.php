@@ -3,10 +3,7 @@
 	if(!isset($_POST['nome']) || !isset($_POST['email']) || !isset($_POST['senha']) || !isset($_POST['cpf']) || !isset($_POST['telefone']) ) 
 		header("Location: index.php");
 
-	$host = "localhost";
-	$user = "root";
-	$senha = "";
-	$banco = "trabalho";
+	include("config.php");
 
 	$conexao = mysqli_connect($host, $user, $senha, $banco) or die(mysqli_error());
 

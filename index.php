@@ -23,8 +23,14 @@
 			<br><br><center><h1 class="w3-animate-top" style="color:white"> UBERMO </h1></center><br><br><br>
 			<h5 style="color:white" class="w3-animate-left"> Login:</h5><br>
 			<center class="w3-animate-left">
-				<input class="w3-input w3-border" placeholder="Email" required type ="text" <ce name="email"/><br>
-				<p><input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/></p><br>
+				<input class="w3-input w3-border" placeholder="Email" required type ="text" name="email"/><br>
+				<p><input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/></p>
+				<ul class="ul-tipoconta">
+					<li class="li-tipoconta"><input class="input-type" type="radio" name="tipoconta" id="tipoconta"  value="1" checked /><p class="p-input-radio">Cliente</p></li>
+					<li class="li-tipoconta"><input class="input-type" type="radio" name="tipoconta" id="tipoconta"  value="2" /><p class="p-input-radio">Prestador</p></li>
+				</ul>
+				
+				
 				<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="ENTRAR" value="ENTRAR"/></p><br>
 				<h6 style="color:white">Não possui login?</h6>
 				<a style="color:aqua" href="cadastro1.php">Clique aqui para se cadastrar</a>
