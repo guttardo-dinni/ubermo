@@ -100,7 +100,7 @@
 		</b></h6>
 		<p style="font-size: 12px">
 			<?php
-				echo "$email";
+				echo $_SESSION['nome'];
 				
 			?>
 			<img src="upload/<?php echo $foto; ?>" width="100" height="100"/>

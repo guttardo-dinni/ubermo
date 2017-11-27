@@ -71,8 +71,11 @@
 			$_SESSION['idpessoa'] = $idpessoa;
 			$_SESSION['categoria'] = 1;
 
-			$foto = $linha['foto'];
-			$_SESSION['foto'] = $foto;
+			$_SESSION['foto'] = $linha['foto'];
+			$_SESSION['nome'] = $linha['nome'];
+			$_SESSION['cpf'] = $linha['cpf'];
+			$_SESSION['telefone'] = $linha['telefone'];
+			$_SESSION['cartao'] = $linha['numerocc'];
 
 			//$_SESSION['idcliente'] = $_POST['idcliente'];
 			echo "<script>alert('Logado como Prestador')</script>";
@@ -99,10 +102,11 @@
 			$idpessoa = $linha['idcliente'];
 			$_SESSION['idpessoa'] = $idpessoa;
 
-			$foto = $linha['foto'];
-			$_SESSION['foto'] = $foto;
-
-
+			$_SESSION['foto'] = $linha['foto'];
+			$_SESSION['nome'] = $linha['nome'];
+			$_SESSION['cpf'] = $linha['cpf'];
+			$_SESSION['telefone'] = $linha['telefone'];
+			$_SESSION['cartao'] = $linha['numerocc'];
 
 			$_SESSION['categoria'] = 0;
 			echo "<script>alert('Logado como Cliente')</script>";
