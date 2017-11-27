@@ -86,7 +86,7 @@
 		$_SESSION['cpf'] = $_POST['cpf'];
 		$_SESSION['telefone'] = $_POST['telefone'];
 
-		$_SESSION['foto'] = $_POST['foto'];
+		//$_SESSION['foto'] = $_POST['foto'];
 		$_SESSION['pontuacao'] = $_POST['pontuacao'];
 		$_SESSION['numerocc'] = $_POST['numerocc'];
 }

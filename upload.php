@@ -9,7 +9,8 @@
 	else{
 		$idpessoa = $_SESSION['idpessoa'];
 		$email= $_SESSION['email'];
-		$categoria= $_SESSION['categoria']; 
+		$categoria= $_SESSION['categoria'];
+		$foto = $_SESSION['foto'];
 	}
 
 	//CONEXAO COM O BD
@@ -99,7 +100,13 @@
 		</b></h6>
 		<p style="font-size: 12px">
 			<?php
-				echo "$email"
+				echo "$email";
+				
+			?>
+			<img src="upload/<?php echo $foto; ?>" width="100" height="100"/>
+			<?php
+
+
 			?>	
 		</p>
 		</div>

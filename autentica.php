@@ -62,7 +62,7 @@
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['senha'] = $_POST['senha'];
 
-			$query = sprintf("SELECT idprestador FROM prestador WHERE email='$email' and senha='$senha'");
+			$query = sprintf("SELECT * FROM prestador WHERE email='$email' and senha='$senha'");
 
 			$dados = mysqli_query($conexao, $query) or die(mysql_error());
 			$linha = mysqli_fetch_assoc($dados);
@@ -70,6 +70,10 @@
 
 			$_SESSION['idpessoa'] = $idpessoa;
 			$_SESSION['categoria'] = 1;
+
+			$foto = $linha['foto'];
+			$_SESSION['foto'] = $foto;
+
 			//$_SESSION['idcliente'] = $_POST['idcliente'];
 			echo "<script>alert('Logado como Prestador')</script>";
 			echo "<script>loginsuccessfully()</script>";
@@ -84,8 +88,9 @@
 			session_start();
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['senha'] = $_POST['senha'];
+
 			
-			$query = sprintf("SELECT idcliente FROM cliente WHERE email='$email' and senha='$senha'");
+			$query = sprintf("SELECT * FROM cliente WHERE email='$email' and senha='$senha'");
 
 			$dados = mysqli_query($conexao, $query) or die(mysql_error());
 
@@ -93,6 +98,11 @@
 
 			$idpessoa = $linha['idcliente'];
 			$_SESSION['idpessoa'] = $idpessoa;
+
+			$foto = $linha['foto'];
+			$_SESSION['foto'] = $foto;
+
+
 
 			$_SESSION['categoria'] = 0;
 			echo "<script>alert('Logado como Cliente')</script>";
