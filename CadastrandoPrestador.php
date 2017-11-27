@@ -51,6 +51,18 @@
 		echo "<script>alert('Favor preencher todos os campos')</script>";
 		echo "<script>setTimeout(window.location='CadastroPrestador.php')</script>";
 	}
+	else if( preg_match('/\d+/', $nome)>0 ){
+	   echo "<script>alert('Nome inválido')</script>";
+	   echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+	}
+	else if( strstr($email, '@') == NULL){
+		echo "<script>alert('E-mail inválido')</script>";
+		echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+	}
+	else if( strlen($cpf) != 11){
+		echo "<script>alert('CPF inválido')</script>";
+		echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+	}
 	else{ 
 
 		$sql = mysqli_query($conexao, "INSERT INTO prestador (nome,email,cpf,telefone,pontuacao,senha) VALUES ('$nome','$email','$cpf','$telefone','$pontuacao','$senha')");
