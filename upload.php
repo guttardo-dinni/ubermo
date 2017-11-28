@@ -118,11 +118,13 @@
 		<div  style="font-weight:bold">
 			<?php if($categoria == 0 ) { ?>
 			<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
+			<a href="relatorio.php" class="w3-bar-item w3-button">Relatório financeiro</a>
 			<?php } else if($categoria == 1 ) { ?>
 			<a href="TodasSolicitacoes.php" class="w3-bar-item w3-button">Consultar Solicitações</a>
 			<?php } ?>
 			<?php if($categoria == 1) { ?>
 			<a href="AprovarServicos.php" class="w3-bar-item w3-button">Aprovar Serviços</a>
+			<a href="relatorio.php" class="w3-bar-item w3-button">Relatório financeiro</a>
 			<?php } ?>
 			<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
 		</div>
@@ -166,20 +168,51 @@
 
 
 <center><h2>Solicitações pendentes: </h2></center>	<?php
+
+				$tabela = '<table border="1">';//abre table
+			    $tabela .='<thead>';//abre cabeçalho
+			    $tabela .= '<tr>';//abre uma linha
+			    $tabela .= '<th>Solicitacão</th>'; // colunas do cabeçalho
+			    $tabela .= '<th>Serviço</th>';
+			    $tabela .= '<th>Valor</th>';
+			    $tabela .= '<th>Data</th>';
+			    $tabela .= '</tr>';//fecha linha
+			    $tabela .='</thead>'; //fecha cabeçalho
+			    $tabela .='<tbody>';//abre corpo da tabela
 	
 	if($categoria == 1)	{ //AS SOLICITACOES AGUARDANDO SEREM ACEITAS SÓ APARECERÃO PROS PRESTADORES
 
 		if($totalsolicitacao > 0) {
 			do {
 	?>			<form method="post" action="atendesolicitacao.php">
-				<center><p> Solicitacao <?=$linhasolicitacao['idsolicitacao']?> <input type="hidden" name="idsolicitacao" value="<?php echo $linhasolicitacao['idsolicitacao']?>">
-				 / <?=$linhasolicitacao['nomeservico']?> <input type="hidden" name="nomeservico" value="<?php echo $linhasolicitacao['nomeservico']?>">
-				 / R$<?=$linhasolicitacao['valor']?> <input type="hidden" name="valor" value="<?php echo $linhasolicitacao['valor']?>">
-				 / <?=$linhasolicitacao['dataAMD']?> <input type="hidden" name="dataAMD" value="<?php echo $linhasolicitacao['dataAMD']?>">
-				  <input type="submit" name="atende" value="Atender solicitação"/></p></center></form>
+
+
+				<?php
+			    //crie uma variável para receber o código da tabela
+			    /*Se você tiver um loop para exibir os dados ele deve ficar aqui*/
+			    $tabela .= '<tr>'; // abre uma linha
+			    $tabela .= '<td>'.$linhasolicitacao['idsolicitacao'].'</td>'; // coluna Alvara
+			    $tabela .= '<td>'.$linhasolicitacao['nomeservico'].'</td>'; //coluna numero
+			    $tabela .= '<td>R$'.$linhasolicitacao['valor'].'</td>'; // coluna validade
+			    $tabela .= '<td>'.$linhasolicitacao['dataAMD'].'</td>'; //coluna anexo
+			    ?>
+
+
+				<center><input type="hidden" name="idsolicitacao" value="<?php echo $linhasolicitacao['idsolicitacao']?>">
+				 <input type="hidden" name="nomeservico" value="<?php echo $linhasolicitacao['nomeservico']?>">
+				 <input type="hidden" name="valor" value="<?php echo $linhasolicitacao['valor']?>">
+				 <input type="hidden" name="dataAMD" value="<?php echo $linhasolicitacao['dataAMD']?>">
+				  <input type="submit" name="atende" value="Atender solicitação <?php echo $linhasolicitacao['idsolicitacao']?>"/></p></center></form>
 	<?php
 
 			}while($linhasolicitacao = mysqli_fetch_assoc($dadossolicitacao));
+
+				?><center><?php echo $tabela ?></center><?php
+
+				$tabela .= '</tr>'; // fecha linha
+			    /*loop deve terminar aqui*/
+			    $tabela .='</tbody>'; //fecha corpo
+			    $tabela .= '</table>';//fecha tabela
 
 		}
 		else { ?> 
