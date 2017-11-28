@@ -25,12 +25,12 @@
 	<center><h1 style="color: white"> Cadastro de Cliente </h1></center>
 	<center>
 		<br>
-		<input class="w3-input w3-border" type="text" placeholder="Nome" required type ="text" <ce name="nome"/><br>
-		<input class="w3-input w3-border" type="text" placeholder="Email" required type ="text" <ce name="email"/><br>
-		<input class="w3-input w3-border" type="number" placeholder="CPF" required type ="number" <ce name="cpf"/><br>
-		<input class="w3-input w3-border" type="number" placeholder="Telefone" required type ="number" <ce name="telefone"/><br>
+		<input class="w3-input w3-border" type="text" placeholder="Nome" required type ="text" name="nome"/><br>
+		<input class="w3-input w3-border" type="text" placeholder="Email" required type ="text" name="email"/><br>
+		<input class="w3-input w3-border" type="number" placeholder="CPF" required type ="number" name="cpf"/><br>
+		<input class="w3-input w3-border" type="number" placeholder="Telefone" required type ="number" name="telefone"/><br>
 		<input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/><br>
-		Arquivo : <input type="file" required name="arquivo">
+		<p class="p-input-foto">Foto:</p> <input class="input-foto" type="file" required name="arquivo">
 		<input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="CADASTRAR" value="CADASTRAR"/><br>
 		<!--<input type="submit" value="Salvar"> -->
 	</center>

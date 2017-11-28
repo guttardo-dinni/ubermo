@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `prestador` (
   `telefone` varchar(100) NOT NULL,
   `pontuacao` float NOT NULL,
   `senha` varchar(100) NOT NULL,
+  `foto` varchar(100) NOT NULL,
   PRIMARY KEY (`idprestador`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 

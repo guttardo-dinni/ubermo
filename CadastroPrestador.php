@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,18 +20,18 @@
 </style>
 
 <body class="w3-content" style="max-width:500px">
-
-<form method="post" action="CadastrandoPrestador.php">
+<form method="post" action="CadastrandoPrestador.php" enctype="multipart/form-data">
 
 	<br><br><br><br><br>
 	<center><h1 style="color: white"> Cadastro de Prestador </h1></center>
 	<center>
 		<br>
-		<input class="w3-input w3-border" type="text" placeholder="Nome" required type ="text" <ce name="nome"/><br>
-		<input class="w3-input w3-border" type="text" placeholder="Email" required type ="text" <ce name="email"/><br>
-		<input class="w3-input w3-border" type="number" placeholder="CPF" required type ="number" <ce name="cpf"/><br>
-		<input class="w3-input w3-border" type="number" placeholder="Telefone" required type ="number" <ce name="telefone"/><br>
+		<input class="w3-input w3-border" type="text" placeholder="Nome" required type ="text" name="nome"/><br>
+		<input class="w3-input w3-border" type="text" placeholder="Email" required type ="text" name="email"/><br>
+		<input class="w3-input w3-border" type="number" placeholder="CPF" required type ="number" name="cpf"/><br>
+		<input class="w3-input w3-border" type="number" placeholder="Telefone" required type ="number" name="telefone"/><br>
 		<input class="w3-input w3-border" placeholder="Senha" required type="password" name="senha"/><br>
+		<p class="p-input-foto">Foto:</p> <input class="input-foto" type="file" required name="arquivo">
 		<input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="CADASTRAR" value="CADASTRAR"/><br>
 	</center>
 

@@ -249,6 +249,19 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     text-align: left;
 	margin-bottom: 0px;
 	margin-top: 0px;
+}
 
-	
+.p-input-foto {
+    color: white;
+    float: left;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-top: 3;
+}
+
+.input-foto {
+	float: left;
+    margin-left: 15px;
+	color: white;
+	padding-bottom: 30px;
 }

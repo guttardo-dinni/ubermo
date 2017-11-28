@@ -1,6 +1,6 @@
 <?php
 
-	if(!isset($_POST['nome']) || !isset($_POST['email']) || !isset($_POST['senha']) || !isset($_POST['cpf']) || !isset($_POST['telefone']) ) 
+	if(!isset($_POST['nome']) || !isset($_POST['email']) || !isset($_POST['senha']) || !isset($_POST['cpf']) || !isset($_POST['telefone']) || !isset($_FILES['arquivo']) )
 		header("Location: index.php");
 
 	include("config.php");
@@ -47,25 +47,34 @@
 
 	$pontuacao = 0;
 
+	if(isset($_FILES['arquivo'])){
+		$extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+		$foto = md5(time()). $extensao; // novo nome do foto
+	}
+	
 	if( $nome == NULL || $email == NULL || $senha == NULL || $telefone == NULL || $cpf == NULL ){
 		echo "<script>alert('Favor preencher todos os campos')</script>";
 		echo "<script>setTimeout(window.location='CadastroPrestador.php')</script>";
 	}
 	else if( preg_match('/\d+/', $nome)>0 ){
 	   echo "<script>alert('Nome inválido')</script>";
-	   echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+	   echo "<script>setTimeout(window.location='CadastroPrestador.php')</script>";
 	}
 	else if( strstr($email, '@') == NULL){
 		echo "<script>alert('E-mail inválido')</script>";
-		echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+		echo "<script>setTimeout(window.location='CadastroPrestador.php')</script>";
 	}
 	else if( strlen($cpf) != 11){
 		echo "<script>alert('CPF inválido')</script>";
-		echo "<script>setTimeout(window.location='CadastroCliente.php')</script>";
+		echo "<script>setTimeout(window.location='CadastroPrestador.php')</script>";
 	}
-	else{ 
+	else{
+		//Abaixo colocando a imagem no na pasta
+		$diretorio = "upload/";
+		move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$foto);
 
-		$sql = mysqli_query($conexao, "INSERT INTO prestador (nome,email,cpf,telefone,pontuacao,senha) VALUES ('$nome','$email','$cpf','$telefone','$pontuacao','$senha')");
+		$sql = mysqli_query($conexao, "INSERT INTO prestador (nome,email,cpf,telefone,pontuacao,senha,foto) VALUES ('$nome','$email','$cpf','$telefone','$pontuacao','$senha','$foto')");
+		
 		echo "<script>alert('Cadastrado com sucessos!')</script>";
 		echo "<script>setTimeout(window.location='index.php')</script>";
 
@@ -77,7 +86,7 @@
 		$_SESSION['telefone'] = $_POST['telefone'];
 
 		$_SESSION['pontuacao'] = $_POST['pontuacao'];
-		$_SESSION['numerocc'] = $_POST['numerocc'];
+		//$_SESSION['numerocc'] = $_POST['numerocc'];
 }
 
 

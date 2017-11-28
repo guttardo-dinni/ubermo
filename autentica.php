@@ -39,85 +39,75 @@
 	$senha = $_POST['senha'];
 	$tipoconta = $_POST['tipoconta'];
 	
-	$row = 0;
-	$row2 = 0;
+	if($tipoconta == 1){ //CLIENTE
 	
-	if($tipoconta == 1){
 		$sql = mysqli_query($conexao, "SELECT * FROM cliente WHERE email='$email' and senha='$senha'") or die(mysqli_error());
 		$row = mysqli_num_rows($sql);
-	}
-	else{
-		$sql2 = mysqli_query($conexao, "SELECT * FROM prestador WHERE email='$email' and senha='$senha'") or die(mysqli_error());
-		$row2 = mysqli_num_rows($sql2);
-	}
-	
-	
-
-
-	if($row2 > 0){ // AQUI É UM PRESTADOR
-
-			$idpessoa = mysqli_query($conexao, "SELECT idprestador FROM prestador WHERE email='$email' and senha='$senha'") or die(mysqli_error());
-
-			session_start();
-			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['senha'] = $_POST['senha'];
-
-			$query = sprintf("SELECT * FROM prestador WHERE email='$email' and senha='$senha'");
-
-			$dados = mysqli_query($conexao, $query) or die(mysql_error());
-			$linha = mysqli_fetch_assoc($dados);
-			$idpessoa = $linha['idprestador'];
-
-			$_SESSION['idpessoa'] = $idpessoa;
-			$_SESSION['categoria'] = 1;
-
-			$_SESSION['foto'] = $linha['foto'];
-			$_SESSION['nome'] = $linha['nome'];
-			$_SESSION['cpf'] = $linha['cpf'];
-			$_SESSION['telefone'] = $linha['telefone'];
-			$_SESSION['cartao'] = $linha['numerocc'];
-
-			//$_SESSION['idcliente'] = $_POST['idcliente'];
-			echo "<script>alert('Logado como Prestador')</script>";
-			echo "<script>loginsuccessfully()</script>";
-
-			//echo "<script>setTimeout(window.location='upload.php')</script>";
-	}
-	else if($row > 0){ // AQUI É UM CLIENTE
-
-			$idpessoa = mysqli_query($conexao, "SELECT idcliente FROM cliente WHERE email='$email' and senha='$senha'") or die(mysqli_error());
-
-
-			session_start();
-			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['senha'] = $_POST['senha'];
-
-			
-			$query = sprintf("SELECT * FROM cliente WHERE email='$email' and senha='$senha'");
-
-			$dados = mysqli_query($conexao, $query) or die(mysql_error());
-
-			$linha = mysqli_fetch_assoc($dados);
-
-			$idpessoa = $linha['idcliente'];
-			$_SESSION['idpessoa'] = $idpessoa;
-
-			$_SESSION['foto'] = $linha['foto'];
-			$_SESSION['nome'] = $linha['nome'];
-			$_SESSION['cpf'] = $linha['cpf'];
-			$_SESSION['telefone'] = $linha['telefone'];
-			$_SESSION['cartao'] = $linha['numerocc'];
-
-			$_SESSION['categoria'] = 0;
-			echo "<script>alert('Logado como Cliente')</script>";
-			echo "<script>loginsuccessfully()</script>";
-
-			//echo "<script>setTimeout(window.location='upload.php')</script>";
-	}
-	else{
+		
+		if($row < 1){
 			echo "<script>alert('Email ou senha invalida')</script>";
 			echo "<script>loginfailed()</script>";
+			exit;
+		}
 
+		session_start();
+		
+		$query = sprintf("SELECT * FROM cliente WHERE email='$email' and senha='$senha'");
+		$dados = mysqli_query($conexao, $query) or die(mysql_error());
+		$linha = mysqli_fetch_assoc($dados);
+
+		//salva os dados da pessoa na sessao
+		$_SESSION['idpessoa'] = $linha['idcliente'];
+		$_SESSION['nome'] = $linha['nome'];
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['cpf'] = $linha['cpf'];
+		$_SESSION['foto'] = $linha['foto'];
+		$_SESSION['pontuacao'] = $linha['pontuacao'];
+		$_SESSION['telefone'] = $linha['telefone'];
+		$_SESSION['cartao'] = $linha['numerocc'];
+		$_SESSION['senha'] = $_POST['senha'];
+		$_SESSION['categoria'] = 0;
+		
+		echo "<script>alert('Logado como Cliente')</script>";
+		echo "<script>loginsuccessfully()</script>";
+	}
+	
+	else if($tipoconta == 2){ //PRESTADOR
+	
+		$sql = mysqli_query($conexao, "SELECT * FROM prestador WHERE email='$email' and senha='$senha'") or die(mysqli_error());
+		$row = mysqli_num_rows($sql);
+		
+		if($row < 1){
+			echo "<script>alert('Email ou senha invalida')</script>";
+			echo "<script>loginfailed()</script>";
+			exit;
+		}
+
+		session_start();
+		
+		$query = sprintf("SELECT * FROM prestador WHERE email='$email' and senha='$senha'");
+		$dados = mysqli_query($conexao, $query) or die(mysql_error());
+		$linha = mysqli_fetch_assoc($dados);
+
+		//salva os dados da pessoa na sessao
+		$_SESSION['idpessoa'] = $linha['idprestador'];
+		$_SESSION['nome'] = $linha['nome'];
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['cpf'] = $linha['cpf'];
+		$_SESSION['foto'] = $linha['foto'];
+		$_SESSION['pontuacao'] = $linha['pontuacao'];
+		$_SESSION['telefone'] = $linha['telefone'];
+		$_SESSION['senha'] = $_POST['senha'];
+		$_SESSION['categoria'] = 1;
+		
+		echo "<script>alert('Logado como Prestador')</script>";
+		echo "<script>loginsuccessfully()</script>";
+	}
+	
+	else{
+		echo "<script>alert('Email ou senha invalida')</script>";
+		echo "<script>loginfailed()</script>";
+		exit;
 			//echo "<script>setTimeout(window.location='index.php')</script>";
 	}
 
