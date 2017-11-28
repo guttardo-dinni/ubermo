@@ -42,7 +42,7 @@
 </style>
 
 <body>
-	<h1><center>Consulta de solicitações</center></h1>
+	<h1><center>Aprovar Servicos</center></h1>
 
 	<?php
 
@@ -58,18 +58,24 @@
 	$total = mysqli_num_rows($dados);
 	$total2 = mysqli_num_rows($dados2);
 
-	?><form method="post" action="upload.php"><?php
+	?><form method="post" action="CadastrandoServico.php"><?php
 
 	if($total > 0) {
 		do { 
-	?>	<center><p>O cliente ID <?=$linha['idcliente']?> sugeriu o serviço: "<?=$linha['nomeservico']?>" <input type="submit" name="Aprovar" value="Aprovar serviço"/></p></center></form><?php
+	?> <?php if( $linha['aprovado'] == 0){ ?>	<center><p>O cliente ID <?=$linha['idcliente']?> sugeriu o serviço: "<?=$linha['nomeservico']?>"
+	<input type="hidden" name="nomeservico" value="<?php echo $linha['nomeservico']?>">
+	<input type="submit" name="Aprovar" value="Aprovar serviço"/> </p></center></form><?php
+			}
 
 			}while($linha = mysqli_fetch_assoc($dados));
 	}
 
 	if($total2 > 0) {
 		do { 
-	?>	<center><p>O prestador ID <?=$linha['idprestador']?> sugeriu o serviço: "<?=$linha['nomeservico']?>" <input type="submit" name="Aprovar" value="Aprovar serviço"/></p></center></form><?php
+	?><?php if( $linha['aprovado'] == 0){?><center><p>O prestador ID <?=$linha['idprestador']?> sugeriu o serviço: "<?=$linha['nomeservico']?>"
+	<input type="hidden" name="nomeservico" value="<?php echo $linha['nomeservico']?>">
+	<input type="submit" name="Aprovar" value="Aprovar serviço"/></p></center></form><?php
+			}
 
 			}while($linha = mysqli_fetch_assoc($dados));
 	}

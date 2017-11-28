@@ -48,10 +48,22 @@
 		echo "<script>alert('Favor preencher todos os campos')</script>";
 		echo "<script>setTimeout(window.location='registraendereco.php')</script>";
 	}
+	else if( preg_match('/\d+/', $rua)>0 ){
+	   echo "<script>alert('Rua inválida')</script>";
+	   echo "<script>setTimeout(window.location='registraendereco.php')</script>";
+	}
+	else if( preg_match('/\d+/', $bairro)>0 ){
+	   echo "<script>alert('Rua inválida')</script>";
+	   echo "<script>setTimeout(window.location='registraendereco.php')</script>";
+	}
+	else if( preg_match('/\d+/', $cidade)>0 ){
+	   echo "<script>alert('Rua inválida')</script>";
+	   echo "<script>setTimeout(window.location='registraendereco.php')</script>";
+	}
 	else{ 
 
 		$sql = mysqli_query($conexao, "INSERT INTO endereco (nomeEnd, idcliente, rua, numero, complemento, bairro, cidade, cep) VALUES ('$nomeEnd','$idpessoa','$rua','$numero','$complemento','$bairro','$cidade','$cep')");
-		echo "<script>alert('Cadastrado com sucessos!')</script>";
+		echo "<script>alert('Endereço cadastrado com sucesso!')</script>";
 		echo "<script>setTimeout(window.location='AbrirSolicitacao.php')</script>";
 	}
 ?>

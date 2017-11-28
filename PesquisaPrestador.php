@@ -59,6 +59,8 @@
 
 	$total = mysqli_num_rows($dados);
 
+	$linha = mysqli_fetch_assoc($dados);
+
 	if($total > 0) {
 		do { if(strtolower($linha['nome']) == strtolower($nomeprestador)) {
 	?>	<center><p><b>INFO: Nome: <?=$linha['nome']?> / Email: <?=$linha['email']?> / Tel: <?=$linha['telefone']?> / Pontuação: <?=$linha['pontuacao']?> </b></p></center>

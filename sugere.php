@@ -59,8 +59,8 @@
 		else if ($categoria == 1)
 			$sql = mysqli_query($conexao, "INSERT INTO sugerep (idprestador,nomeservico) VALUES ('$idpessoa','$nomeservico')");
 		//$sql = mysqli_query($conexao, "INSERT INTO servico (nomeservico, valormercado, tipo, status, descricao) VALUES ('Barman', '175', '1', '1', 'Serve bebida pra galera')")
-		echo "<script>alert('Sugestão enviada com sucessos!')</script>";
-		echo "<script>setTimeout(window.location='upload.php')</script>";
+		echo "<script>alert('Sugestão enviada com sucesso!')</script>";
+		echo "<script>setTimeout(window.location='AbrirSolicitacao.php')</script>";
 }
 
 

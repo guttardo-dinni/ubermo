@@ -27,7 +27,23 @@
 <head>
 	<title>Servico Concluido UBERMO</title>
 </head>
-<body background = "plano.jpg">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.w3-sidebar a {font-family: "Roboto", sans-serif}
+	body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif; color: white;}
+	body {
+		background-image: url("blue-slate.jpg");
+	    background-color: #cccccc;
+	}
+</style>
+
+<body>
 
 	<br><br><br><br><br><br><br><br><br>
 	<center><h2> Avaliação do Servico</h2></center>
@@ -48,7 +64,7 @@
 	if($categoria == 1){ 
 		if ($linha['notaprocliente'] == 0 )	{													?>
 			<form method="post" action="ConcluirAvaliacao.php">
-			<center> Deixe um comentário sobre o servico: <textarea name="comentario"></textarea> </center><br>	
+			<center> Comentário sobre o serviço <textarea name="comentario"></textarea> </center><br>	
 			<center> Nota do Cliente (1 a 5): 	<input type ="number" name="nota"/> </center><br>	
 			<input type="hidden" name="idservico" value="<?php echo $idservico?>">
 			<center> <input type="submit" name="Cadastrar" value="Concluir Avaliacao"/> </center>

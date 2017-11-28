@@ -75,7 +75,7 @@
 
 		$sql = mysqli_query($conexao, "INSERT INTO prestador (nome,email,cpf,telefone,pontuacao,senha,foto) VALUES ('$nome','$email','$cpf','$telefone','$pontuacao','$senha','$foto')");
 		
-		echo "<script>alert('Cadastrado com sucessos!')</script>";
+		echo "<script>alert('Prestador cadastrado com sucesso!')</script>";
 		echo "<script>setTimeout(window.location='index.php')</script>";
 
 		session_start();

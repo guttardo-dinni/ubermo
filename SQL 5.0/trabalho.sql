@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 18-Nov-2017 às 00:04
+-- Generation Time: 28-Nov-2017 às 14:05
 -- Versão do servidor: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -56,16 +56,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `numerocc` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
   PRIMARY KEY (`idcliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
 INSERT INTO `cliente` (`idcliente`, `nome`, `email`, `cpf`, `foto`, `pontuacao`, `telefone`, `numerocc`, `senha`) VALUES
-(9, 'Henrique Diniz', 'hiquepenna@hotmail.com', '08348988610', '', 0, '37991214090', '', '123'),
-(10, 'Denis Luciano', 'denis123', 'denis', '', 0, '666', '', 'denis123'),
-(11, 'pedro', 'pedro', '666574', '', 0, 'pedro', '', 'pedro');
+(17, 'Henrique', 'hiquepenna@hotmail.com', '08348988610', 'a704f2f7256602521567172c603b668e.jpg', 0, '37991214090', '', '123');
 
 -- --------------------------------------------------------
 
@@ -86,17 +84,15 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `cep` int(11) NOT NULL,
   PRIMARY KEY (`idendereco`),
   KEY `idcliente_endereco` (`idcliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COMMENT='Aqui é um endereço dos cliente';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='Aqui é um endereço dos cliente';
 
 --
 -- Extraindo dados da tabela `endereco`
 --
 
 INSERT INTO `endereco` (`idendereco`, `nomeEnd`, `idcliente`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `cep`) VALUES
-(2, 'Casa do Lucas', 9, 'Rua Jurema', 601, '', 'Providencia', 'Pará de minas', 36570000),
-(3, 'Casa da vovÃ³', 11, 'Rua cacique freire', 597, 'Ap 702', 'Centro', 'Belo Horizonte', 36570950),
-(4, 'Minha Casa', 11, 'Afonso Pena', 607, 'ap21', 'centro', 'Viciosa', 36570000),
-(5, 'Casa do meu pai', 9, '27', 27, '27', '27', '27', 27);
+(9, 'Minha Cassa', 17, 'Joaquim TeÃ³filo', 34, 'Casa verde', 'SÃ£o francisco', 'Vicosa', 36570000),
+(10, 'Casa do meu pai', 17, 'Rua Jacinto', 31, 'Esquina da rua 4', 'Sao Jose', 'Belo Horizonte', 34567898);
 
 -- --------------------------------------------------------
 
@@ -115,16 +111,15 @@ CREATE TABLE IF NOT EXISTS `prestador` (
   `senha` varchar(100) NOT NULL,
   `foto` varchar(100) NOT NULL,
   PRIMARY KEY (`idprestador`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `prestador`
 --
 
-INSERT INTO `prestador` (`idprestador`, `nome`, `email`, `cpf`, `telefone`, `pontuacao`, `senha`) VALUES
-(0, 'FANTASMA', 'FANTASMA', 'FANTASMA', 'FANTASMA', 0, 'FANTASMA'),
-(2, 'prestador', 'prestador', 'prestador', 'prestador', 0, 'prestador'),
-(3, 'Carlos', 'carlos', 'carlos', '975', 0, 'carlos123');
+INSERT INTO `prestador` (`idprestador`, `nome`, `email`, `cpf`, `telefone`, `pontuacao`, `senha`, `foto`) VALUES
+(0, 'FANTASMA', 'FANTASMA', 'FANTASMA', 'FANTASMA', 0, 'FANTASMA', ''),
+(4, 'Alexia Penna Barbosa Diniz', 'alexia@prestador', '08348988611', '37991214091', 0, '123', 'd10f02f9eaadddc00014da36f0dc6eae.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,12 +142,12 @@ CREATE TABLE IF NOT EXISTS `servico` (
 --
 
 INSERT INTO `servico` (`nomeservico`, `valormercado`, `tipo`, `status`, `descricao`) VALUES
+('AÃ§ougueiro', 150, 1, 0, 'Vai fazer cortar carne'),
 ('Barman', 175, 1, 1, 'Serve bebida pra galera'),
-('Bombeiro', 350, 1, 0, 'Desentope o encanamento da sua casa '),
-('Cozinheiro', 80, 1, 0, 'Faz comida '),
 ('Faxineira', 350, 1, 1, 'Deixa sua casa brilhando'),
 ('Jardineiro', 80, 1, 1, 'Cuida do seu jardim muito bem'),
-('Pintor', 150, 1, 1, 'Pinta o muro da sua casa');
+('Pintor', 150, 1, 1, 'Pinta o muro da sua casa'),
+('Professor paticular', 55, 1, 1, 'Vai dar aula pras criancas');
 
 -- --------------------------------------------------------
 
@@ -179,19 +174,14 @@ CREATE TABLE IF NOT EXISTS `solicitacao` (
   KEY `nomeservico_solicitacao` (`nomeservico`),
   KEY `idprestador_solicitacao` (`idprestador`),
   KEY `endereco_solicitacao` (`endereco`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `solicitacao`
 --
 
 INSERT INTO `solicitacao` (`idsolicitacao`, `idcliente`, `nomeservico`, `idprestador`, `endereco`, `valor`, `notaprocliente`, `notaproprestador`, `comcliente`, `comprestador`, `efetuado`, `dataAMD`) VALUES
-(23, 11, 'Jardineiro', 3, 3, 80, 5, 4, 'chique', 'Gostei bastante do cliente', 1, '2017-11-17'),
-(24, 11, 'Faxineira', 3, 4, 350, 4, 5, 'fofinho', 'Massa demais', 1, '2017-11-17'),
-(25, 11, 'Barman', 3, 4, 175, 5, 5, 'Gostei', 'Gostei', 1, '2017-11-15'),
-(26, 9, 'Jardineiro', 3, 2, 80, 3, 4, 'Gostei um pouco', 'Gostei bastante', 1, '2017-11-17'),
-(27, 9, 'Barman', 3, 2, 175, 1, 5, 'Um Ã³timo barman', 'Bem porcaria', 1, '2017-11-17'),
-(28, 11, 'Pintor', 3, 4, 150, 2, 1, 'Feio o pintor', 'O cliente ficou dando em cima de mim', 1, '2017-11-17');
+(29, 17, 'Professor paticular', 4, 9, 55, 4, 5, 'Foi legal', 'Eu gostei hein', 1, '2017-11-28');
 
 -- --------------------------------------------------------
 
@@ -203,9 +193,17 @@ DROP TABLE IF EXISTS `sugerec`;
 CREATE TABLE IF NOT EXISTS `sugerec` (
   `idcliente` int(1) NOT NULL,
   `nomeservico` varchar(100) NOT NULL,
+  `aprovado` tinyint(4) NOT NULL,
   KEY `idcliente_sugere` (`idcliente`),
   KEY `nomeservico_sugere` (`nomeservico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Aqui os clientes irao sugerir servicos';
+
+--
+-- Extraindo dados da tabela `sugerec`
+--
+
+INSERT INTO `sugerec` (`idcliente`, `nomeservico`, `aprovado`) VALUES
+(17, 'Professor paticular', 1);
 
 -- --------------------------------------------------------
 
@@ -217,6 +215,7 @@ DROP TABLE IF EXISTS `sugerep`;
 CREATE TABLE IF NOT EXISTS `sugerep` (
   `idprestador` int(11) NOT NULL,
   `nomeservico` varchar(100) NOT NULL,
+  `aprovado` tinyint(11) NOT NULL,
   KEY `idprestador_sugere` (`idprestador`),
   KEY `nomeservico_sugere2` (`nomeservico`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

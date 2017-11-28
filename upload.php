@@ -100,10 +100,15 @@
 		</b></h6>
 		<p style="font-size: 12px">
 			<?php
-				echo $_SESSION['nome'];
-				
+				if( strstr($_SESSION['nome'], ' ', true) != NULL )
+					echo strstr($_SESSION['nome'], ' ', true);
+				else 
+					echo $_SESSION['nome'];
+
+
 			?>
-			<img src="upload/<?php echo $foto; ?>" width="100" height="100"/>
+			<br>
+			<img src="upload/<?php echo $foto; ?>" width="70" height="75"/>
 			<?php
 
 

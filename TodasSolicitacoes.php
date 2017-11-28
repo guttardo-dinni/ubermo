@@ -12,6 +12,9 @@
 		$categoria= $_SESSION['categoria']; 
 	}
 
+	if($categoria == 0)
+		header("Location: upload.php");
+
 	//CONEXAO COM O BD
 	include("config.php");
 

@@ -52,11 +52,11 @@
 	<center>
 		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Identificação (Exemplo: Minha Casa" required type ="text" name="nomeEnd"/>
 		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Rua" required type ="text" name="rua"/>
-		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Nº" required type ="text" name="numero"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Nº" required type ="number" name="numero"/>
 		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Complemento" required type ="text" name="complemento"/>
 		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Bairro" required type ="text" name="bairro"/>
 		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="Cidade" required type ="text" name="cidade"/>
-		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="CEP" required type ="text" name="cep"/>
+		<input class="w3-input w3-border" style="margin: 10px; width:300px" placeholder="CEP" required type ="number" name="cep"/>
 		<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="Cadastrar" value="CADASTRAR"/></p>
 	</center>
 

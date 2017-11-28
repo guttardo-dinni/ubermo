@@ -1,1 +1,1 @@
-Acesse o phpmyadmin e crie um bd com o nome "trabalho" e importar o arquivo da pasta SQL 4.0
+Acesse o phpmyadmin e crie um bd com o nome "trabalho" e importar o arquivo da pasta SQL 5.0
