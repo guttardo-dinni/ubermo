@@ -13,6 +13,7 @@
 		$idpessoa = $_SESSION['idpessoa'];
 		$email= $_SESSION['email'];
 		$categoria= $_SESSION['categoria']; 
+		$foto = $_SESSION['foto'];
 	}
 
 	//CONEXAO COM O BD
@@ -60,6 +61,51 @@
 
 <body>
 
+		<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+		<div class="w3-container w3-display-container w3-padding-16">
+		<i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+		<h3 class="w3-wide" style="color: black"><b>UBERMO</b></h3>
+		<h6 class='w3-wide' style="color: black"><b>
+			<?php 
+				if($categoria == 1) 
+					{ echo "Prestador";}
+				else if($categoria == 0) 
+					echo "Cliente";
+			?>	
+		</b></h6>
+		<p style="font-size: 12px">
+			<?php
+				if( strstr($_SESSION['nome'], ' ', true) != NULL )
+					echo strstr($_SESSION['nome'], ' ', true);
+				else 
+					echo $_SESSION['nome'];
+
+
+			?>
+			<br>
+			<img src="upload/<?php echo $foto; ?>" width="70" height="75"/>
+			<?php
+
+
+			?>	
+		</p>
+		</div>
+		<div  style="font-weight:bold">
+			<?php if($categoria == 0 ) { ?>
+			<a href="AbrirSolicitacao.php" class="w3-bar-item w3-button">Abrir Solicitação</a>
+			<a href="relatorio.php" class="w3-bar-item w3-button">Relatório financeiro</a>
+			<?php } else if($categoria == 1 ) { ?>
+			<a href="TodasSolicitacoes.php" class="w3-bar-item w3-button">Consultar Solicitações</a>
+			<?php } ?>
+			<?php if($categoria == 1) { ?>
+			<a href="AprovarServicos.php" class="w3-bar-item w3-button">Aprovar Serviços</a>
+			<a href="relatorio.php" class="w3-bar-item w3-button">Relatório financeiro</a>
+			<?php } ?>
+			<a href="logout.php" class="w3-bar-item w3-button">Sair</a>
+		</div>
+	</nav>
+
+
 <form method="post" action="Solicitando.php">
 
 	<br><br><br>
@@ -74,7 +120,10 @@
 				do {
 					if($linha['status'] == 1){   
 		?>		
-					<center><p>  <input type="radio" name="ServicoName" value="<?php echo $linha['nomeservico']?>"/> <?=$linha['nomeservico']?> / R$<?=$linha['valormercado']?> diária / <?=$linha['descricao']?> </p></center>
+					<center><p>  <input type="radio" name="ServicoName" value="<?php echo $linha['nomeservico']?>"/> <?=$linha['nomeservico']?> / R$<?=$linha['valormercado']?> <?php if($linha['tipo'] == 0) echo 'diária'; else if($linha['tipo'] == 1) echo 'por hora'; else if($linha['tipo'] == 2) echo 'valor fixo';?> 
+
+
+						/ <?=$linha['descricao']?> </p></center>
 		<?php
 				}					
 

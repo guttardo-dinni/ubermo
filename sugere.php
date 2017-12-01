@@ -12,7 +12,7 @@
 		$categoria= $_SESSION['categoria']; 
 	}
 
-	if(!isset($_POST['nomeservico']) || !isset($_POST['valormercado']) || !isset($_POST['descricao']) )
+	if(!isset($_POST['nomeservico']) || !isset($_POST['valormercado']) || !isset($_POST['descricao']) ||  !isset($_POST['tipo'])  )
 		header("Location: upload.php");
 
 	//CONEXAO COM O BD
@@ -40,8 +40,10 @@
 	$nomeservico= $_POST['nomeservico'];
 	$valormercado= $_POST['valormercado'];
 	$descricao = $_POST['descricao'];
+	$tipo = $_POST['tipo'];
 
-	$tipo = 1;
+
+
 	$status = 0;
 
 	//NÃO DEIXAR O USUARIO SUGERIR UM SERVIÇO REPETIDO
@@ -55,9 +57,9 @@
 		$sql = mysqli_query($conexao, "INSERT INTO servico (nomeservico,valormercado,tipo,status,descricao) VALUES ('$nomeservico','$valormercado','$tipo','$status','$descricao')");
 
 		if($categoria == 0)
-			$sql = mysqli_query($conexao, "INSERT INTO sugerec (idcliente,nomeservico) VALUES ('$idpessoa','$nomeservico')");
+			$sql = mysqli_query($conexao, "INSERT INTO sugerec (idcliente,nomeservico,aprovado) VALUES ('$idpessoa','$nomeservico','0')");
 		else if ($categoria == 1)
-			$sql = mysqli_query($conexao, "INSERT INTO sugerep (idprestador,nomeservico) VALUES ('$idpessoa','$nomeservico')");
+			$sql = mysqli_query($conexao, "INSERT INTO sugerep (idprestador,nomeservico,aprovado) VALUES ('$idpessoa','$nomeservico','0')");
 		//$sql = mysqli_query($conexao, "INSERT INTO servico (nomeservico, valormercado, tipo, status, descricao) VALUES ('Barman', '175', '1', '1', 'Serve bebida pra galera')")
 		echo "<script>alert('Sugestão enviada com sucesso!')</script>";
 		echo "<script>setTimeout(window.location='AbrirSolicitacao.php')</script>";

@@ -10,10 +10,8 @@
 		$idpessoa = $_SESSION['idpessoa'];
 		$email= $_SESSION['email'];
 		$categoria= $_SESSION['categoria']; 
+		$foto = $_SESSION['foto'];
 	}
-
-	if($categoria == 0)
-		header("Location: upload.php");
 
 	//CONEXAO COM O BD
 	include("config.php");
@@ -45,11 +43,14 @@
 </style>
 
 <body>
-	<h1><center>Relatório financeiro</center></h1>
+	<h1><center>Relatório Financeiro</center></h1>
 
 	<?php
 
-	$query = sprintf("SELECT * FROM solicitacao"); 
+	if($categoria == 1)
+		$query = sprintf("SELECT * FROM solicitacao WHERE idprestador='$idpessoa'"); 
+	else if($categoria == 0)
+		$query = sprintf("SELECT * FROM solicitacao WHERE idcliente='$idpessoa'"); 
 
 	$dados = mysqli_query($conexao, $query) or die(mysql_error());
 
@@ -57,12 +58,26 @@
 
 	$total = mysqli_num_rows($dados);
 
-	if($total > 0) {
-		do { 
-	?>	<center><p>SOLICITAÇÃO ID: <?=$linha['idsolicitacao']?> / Cliente ID: <?=$linha['idcliente']?> / Servico: <?=$linha['nomeservico']?> / Prestador ID: <?=$linha['idprestador']?> / Endereco ID: <?=$linha['endereco']?> / R$: <?=$linha['valor']?> / Data: <?=$linha['dataAMD']?>  /  <?php if($linha['efetuado']== 0) echo "Em andamento"; else if($linha['efetuado']== 1) echo "Concluída"; else if($linha['efetuado']== 2) echo "Aguardando prestador"; ?></p></center>
-	<?php
-			}while($linha = mysqli_fetch_assoc($dados));
-		}
+	$financas = 0;
+
+
+		if($total > 0) {
+			do { 
+				if($linha['efetuado']== 1){
+					$financas = $financas + $linha['valor'];
+		?>	<center><p>SOLICITAÇÃO ID: <?=$linha['idsolicitacao']?> / Cliente ID: <?=$linha['idcliente']?> / Servico: <?=$linha['nomeservico']?> / Prestador ID: <?=$linha['idprestador']?> / Endereco ID: <?=$linha['endereco']?> / R$: <?=$linha['valor']?> / Data: <?=$linha['dataAMD']?></p></center>
+		<?php
+				}
+				}while($linha = mysqli_fetch_assoc($dados));
+			}
+	
+
+	if($categoria == 1){
+		?><center><?php echo "Voce faturou um total de R$$financas"; ?></center><?php
+	}
+	else if($categoria == 0){
+		?><center><?php echo "Voce gastou um total de R$$financas"; ?></center><?php
+	}
 	?>
 
 	<br>

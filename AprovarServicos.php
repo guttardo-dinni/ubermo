@@ -10,6 +10,7 @@
 		$idpessoa = $_SESSION['idpessoa'];
 		$email= $_SESSION['email'];
 		$categoria= $_SESSION['categoria']; 
+		$foto = $_SESSION['foto'];
 	}
 
 	//CONEXAO COM O BD

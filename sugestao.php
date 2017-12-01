@@ -43,6 +43,12 @@
 	<center>
 		<input class="w3-input w3-border" placeholder="Um nome para o serviço" required type ="text" name="nomeservico"/><br>
 		<input class="w3-input w3-border" placeholder="Qual o valor?" required type ="number" name="valormercado"/><br>
+
+		</center><p><input type="radio" name="tipo" value="0"/> Diária</p>
+		<p><input type="radio" name="tipo" value="1"/> Por hora</p>
+		<p><input type="radio" name="tipo" value="2"/> Nenhum dos dois</p>
+		<center>
+
 		<textarea class="w3-input w3-border" placeholder="Descreva sobre o serviço" name="descricao"></textarea>
 		<br>
 		<p> <input class="w3-button w3-block w3-black" style="width:200px" type="submit" name="SUGERIR!" value="SUGERIR!"/></p>
