@@ -77,12 +77,12 @@
 		$count2=array_count_values($clientes);//Counts the values in the array, returns associatve array
 		arsort($count2);//Sort it from highest to lowest
 		$keys2=array_keys($count2);//Split the array so we can find the most occuring key
-		echo "O cliente que mais solicitou foi ID $keys2[0]."; ?> <br> <?php
+		echo "O cliente que mais solicitou foi o ID $keys2[0]."; ?> <br> <?php
 
 		$count3=array_count_values($prestadores);//Counts the values in the array, returns associatve array
 		arsort($count3);//Sort it from highest to lowest
 		$keys3=array_keys($count3);//Split the array so we can find the most occuring key
-		echo "O prestador que mais atendeu foi ID $keys3[0]."; ?> <br></center> <?php
+		echo "O prestador que mais atendeu foi o ID $keys3[0]."; ?> <br></center> <?php
 
 
 		?>
